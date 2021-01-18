@@ -1,35 +1,40 @@
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import io.restassured.http.Cookie;
+import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 @Owner("Igor Pavlov")
 @Feature("Login via API")
 @Tag("api")
-    public class DemoShopTests {
+
+public class DemoShopTests {
+
+    @BeforeAll
+    static void beforeEach() {
+        RestAssured.baseURI = "http://demowebshop.tricentis.com";
+    }
 
     @Test
-    void accountAddNewAddresses() {
+    void openUrlWithAuthCookies() {
 
         //Передаем куки для авторизации
         open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
-        Cookie cookie = new Cookie("login", "password");
-        WebDriverRunner.getWebDriver().manage().addCookie(cookie);
+        AuthApi api = new AuthApi();
+        CookieManager cookieManager = new CookieManager(api.cookies());
+        cookieManager.addCookiesToSite();
 
         //Делаем дейсвия на сайте уже авторизованные
         open("http://demowebshop.tricentis.com");
-        $(By.className(".account")).click();
-        $(By.className(".active")).click();
-        $(By.className("button-1 add-address-button")).click();
+        $(By.className("account")).click();
+        $("div.listbox ul li:nth-child(2) a").click();
+        $("div.add-button").click();
         $("h1").shouldHave(text("My account - Add new address"));
 
     }
-
 }
