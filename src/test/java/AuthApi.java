@@ -18,28 +18,17 @@ public class AuthApi{
                 .contentType("application/x-www-form-urlencoded")
 
                 .body(getData())
-                //.basePath("/login")
         .when()
                 .post("/login")
         .then()
                 .log().all()
                 .statusCode(302)
                 .extract().cookies();
-
-
     }
 
     private String getData() {
         return "email=" + EMAIL + "&password=" + PASSWORD; //потому что = application/x-www-form-urlencoded
     }
 }
-
-
-
-
-
-
-
-
 
 
