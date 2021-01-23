@@ -25,15 +25,14 @@ allure {
     dependencies {
             testImplementation "io.rest-assured:rest-assured:4.3.1"
             testImplementation "com.fasterxml.jackson.core:jackson-databind:2.11.2"
+            testImplementation "io.qameta.allure:allure-rest-assured:2.13.5"
+            testImplementation "io.qameta.allure:allure-java-commons:2.13.5"
+            testImplementation "org.hamcrest:hamcrest:2.2"
+            testImplementation "com.codeborne:selenide:5.17.0"
+            testImplementation "ch.qos.logback:logback-classic:1.2.3"
             testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
             testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
             testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
-            testCompile "io.qameta.allure:allure-rest-assured:2.13.5"
-            testCompile "io.qameta.allure:allure-java-commons:2.13.5"
-            testCompile "org.hamcrest:hamcrest:2.2"
-            testImplementation "com.codeborne:selenide:5.17.0"
-            testImplementation "ch.qos.logback:logback-classic:1.2.3"
-
     }
 
 }
