@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DemoShopTests {
 
     @BeforeAll
-    static void beforeEach() {
+    static void setup() {
         RestAssured.baseURI = "http://demowebshop.tricentis.com";
     }
 
