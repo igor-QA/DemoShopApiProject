@@ -16,9 +16,9 @@ public class CookieManager {
                         .manage().addCookie(new Cookie(cookie.getKey(), cookie.getValue())));
     }
 }
-/*
-open = открывем любую страницу сайта например /404;
-Cookie authCookie = new Cookie("login", "password"); Создаем обьект класса и передаем результаты вызова API
-WebDriverRunner.getWebDriver().manage().addCookie(authCookie); передаем драйверу куки
-open = открываем сайт уже авторизованными и делаем там свои дейсвия;
+/**
+* open = открывем любую страницу сайта например /404;
+* Cookie authCookie = new Cookie("login", "password"); Создаем обьект класса и передаем результаты вызова API
+* WebDriverRunner.getWebDriver().manage().addCookie(authCookie); передаем драйверу куки
+* open = открываем сайт уже авторизованными и делаем там свои дейсвия;
  */
