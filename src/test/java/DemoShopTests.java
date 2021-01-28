@@ -19,13 +19,13 @@ public class DemoShopTests {
 
     @Test
     void openUrlWithAuthCookies() {
-        /** Передаем куки для авторизации */
+        /** Передаем куки для авторизации. */
         AuthApi api = new AuthApi();
         open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
         CookieManager cookieManager = new CookieManager(api.cookies());
         cookieManager.addCookiesToSite();
 
-        /** Делаем дейсвия на сайте уже авторизованные */
+        /**  Делаем дейсвия на сайте уже авторизованные. */
         open("http://demowebshop.tricentis.com");
         $(".account").click();
         $("div.listbox ul li:nth-child(2) a").click();
