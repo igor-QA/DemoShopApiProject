@@ -5,8 +5,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class AuthApi{
-    private final static String EMAIL = "test123@ya.ru";
-    private final static String PWD = "testtest13";
 
     @Step("Get new session Cookie")
     public Map<String, String> cookies() {
@@ -16,7 +14,8 @@ public class AuthApi{
         return given()
                 .filter(new AllureRestAssured())
                 .contentType("application/x-www-form-urlencoded")
-                .body(getData())
+                .formParam("email","test123@ya.ru")
+                .formParam("password", "testtest13")
         .when()
                 .post("/login")
         .then()
@@ -24,8 +23,11 @@ public class AuthApi{
                 .statusCode(302)
                 .extract().cookies();
     }
-    /** потому что = application/x-www-form-urlencoded */
-    private String getData() {
-        return "email=" + EMAIL + "&password=" + PWD;
-    }
 }
+
+/** потому что = application/x-www-form-urlencoded
+ * private String getData() {
+ return "email=" EMAIL + "&password=" + PWD;
+ * Если испоьзовать через body = body(getData())
+ }
+ */
